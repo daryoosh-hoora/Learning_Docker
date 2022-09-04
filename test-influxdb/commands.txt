@@ -1,0 +1,7 @@
+docker run -d --name influx -p 8086:8086 -v $PWD/data:/var/lib/influxdb2 -v $PWD/config:/etc/influxdb2 
+	-e DOCKER_INFLUXDB_INIT_MODE=setup 
+	-e DOCKER_INFLUXDB_INIT_ORG=Datis 
+	-e DOCKER_INFLUXDB_INIT_BUCKET=main 
+	-e DOCKER_INFLUXDB_INIT_USERNAME=user1 
+	-e DOCKER_INFLUXDB_INIT_PASSWORD=user1 
+	influxdb
