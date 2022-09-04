@@ -1,0 +1,2 @@
+openssl rand -base64 32 > db_root_password.txt
+docker exec -it my_mysql mysql -u root -p

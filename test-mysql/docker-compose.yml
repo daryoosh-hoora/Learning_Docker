@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  web_service:
+    image: nginx:alpine
+    container_name: my_nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+  db_service:
+    image: mysql:5.6
+    container_name: my_mysql
+    restart: unless-stopped
+    volumes:
+      - db_data:/var/lib/mysql
+    secrets:
+      - db_root_password
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+secrets:
+  db_root_password:
+    file: db_root_password.txt
+volumes:
+  db_data:
